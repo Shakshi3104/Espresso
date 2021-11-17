@@ -17,7 +17,7 @@ import AppKit
 extension CVPixelBuffer {
     // normalize CVPixelBuffer
     // refer to https://www.raywenderlich.com/8246240-image-depth-maps-tutorial-for-ios-getting-started
-    func normalize() -> CVPixelBuffer {
+    public func normalize() -> CVPixelBuffer {
         let cvPixelBuffer = self
                 
         let width = CVPixelBufferGetWidth(cvPixelBuffer)
@@ -51,7 +51,7 @@ extension CVPixelBuffer {
     
     #if canImport(UIKit)
     // convert CVPixelBuffer to UIImage
-    func uiImage(orientation: UIImage.Orientation) -> UIImage? {
+    public func uiImage(orientation: UIImage.Orientation) -> UIImage? {
         let ciImage = CIImage(cvPixelBuffer: self)
         let cgImage = CIContext().createCGImage(ciImage, from: ciImage.extent)
         guard let image = cgImage else { return nil }
@@ -61,7 +61,7 @@ extension CVPixelBuffer {
     #elseif canImport(AppKit)
     // convert CVPixelBuffer to NSImage
     // refer to https://qiita.com/Kyome/items/87b771e13695a6fba99e
-    func nsImage() -> NSImage {
+    public func nsImage() -> NSImage {
         let ciImage = CIImage(cvPixelBuffer: self)
         let rep = NSCIImageRep(ciImage: ciImage)
         let nsImage = NSImage(size: rep.size)

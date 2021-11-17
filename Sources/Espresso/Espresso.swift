@@ -29,9 +29,9 @@ public class DepthDataProcessor {
 
 // MARK: - DepthDataProcessor for iOS
 #if os(iOS)
-extension DepthDataProcessor {
+public extension DepthDataProcessor {
     // convert AVDepthData.depthDataMap to UIImage?
-    public func uiImage(orientation: UIImage.Orientation, depthType: DepthType = .depth) -> UIImage? {
+    func uiImage(orientation: UIImage.Orientation, depthType: DepthType = .depth) -> UIImage? {
         // if depth data's UIImage is not nil
         if depthType == .depth && depthImage != nil {
             print("🎛 depth cache")
@@ -70,7 +70,7 @@ extension DepthDataProcessor {
     }
     
     // save depth data image to photo library
-    public func saveToPhotoLibrary(depthType: DepthType = .depth) {
+    func saveToPhotoLibrary(depthType: DepthType = .depth) {
         var uiImage: UIImage?
         
         switch depthType {
@@ -91,10 +91,10 @@ extension DepthDataProcessor {
 }
 // MARK: - DepthDataProcessor for macOS
 #elseif os(macOS)
-extension DepthDataProcessor {
+public extension DepthDataProcessor {
     
     // convert AVDepthData.depthDataMap to NSImage
-    public func nsImage(depthType: DepthType = .depth) -> NSImage? {
+    func nsImage(depthType: DepthType = .depth) -> NSImage? {
         // if depth data's NSImage is not nil
         if depthType == .depth && depthImage != nil {
             print("🎛 depth cache")

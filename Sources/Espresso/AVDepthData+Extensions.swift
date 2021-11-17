@@ -9,9 +9,9 @@ import AVFoundation
 import CoreImage
 
 // MARK: AVDepthData extensions - convert depth or disparity
-extension AVDepthData {
+public extension AVDepthData {
     // convert to AVDepthData (kCVPixelFormatType_DisparityFloat32)
-    public var asDisparityFloat32: AVDepthData {
+    var asDisparityFloat32: AVDepthData {
         var convertedDepthData: AVDepthData
         
         if self.depthDataType != kCVPixelFormatType_DisparityFloat32 {
@@ -24,7 +24,7 @@ extension AVDepthData {
     }
     
     // convert to AVDepthData (kCVPixelFormatType_DepthFloat32)
-    public var asDepthFloat32: AVDepthData {
+    var asDepthFloat32: AVDepthData {
         var convertedDepthData: AVDepthData
         
         if self.depthDataType != kCVPixelFormatType_DepthFloat32 {
@@ -38,9 +38,9 @@ extension AVDepthData {
 }
 
 // MARK: AVDepthData extensions - load from URL or Data via CIImage
-extension AVDepthData {
+public extension AVDepthData {
     // load AVDepthData? from URL via CIImage
-    public static func fromURL(_ url: URL) -> AVDepthData? {
+    static func fromURL(_ url: URL) -> AVDepthData? {
         let ciImage = CIImage(contentsOf: url,
                               options: [CIImageOption.auxiliaryDepth: true,
                                         CIImageOption.applyOrientationProperty: true])
@@ -54,7 +54,7 @@ extension AVDepthData {
     }
     
     // load AVDepthData? from Data via CIImage
-    public static func fromData(_ data: Data) -> AVDepthData? {
+    static func fromData(_ data: Data) -> AVDepthData? {
         let ciImage = CIImage(data: data,
                               options: [CIImageOption.auxiliaryDepth: true,
                                         CIImageOption.applyOrientationProperty: true])

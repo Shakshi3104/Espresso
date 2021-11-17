@@ -5,6 +5,10 @@ import PackageDescription
 
 let package = Package(
     name: "Espresso",
+    platforms: [
+        .iOS(.v12),
+        .macOS(.v10_15)
+    ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
@@ -23,6 +27,9 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "EspressoTests",
-            dependencies: ["Espresso"]),
+            dependencies: ["Espresso"],
+        resources: [
+            .process("Images")
+        ]),
     ]
 )

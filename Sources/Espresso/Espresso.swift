@@ -10,7 +10,7 @@ typealias XImage = NSImage
 #endif
 
 /// Depth type
-enum DepthType: String, CaseIterable {
+public enum DepthType: String, CaseIterable {
     case depth
     case disparity
 }

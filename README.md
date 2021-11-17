@@ -4,7 +4,36 @@ Espresso is a package for getting a depth data image from a portrait image taken
 
 ## Usage
 
-Under construction...
+```swift
+import AVFoundation
+import Espresso
+
+/// URL of a portrait image
+let url = URL()
+
+// get a depth data image as UIImage from URL
+if let depthData = AVDepthData.fromURL(url) {
+  let processor = DepthDataProcessor(depthData)
+  let depthImage = processor.uiImage(orientation: .right, depthType: .depth)
+}
+
+// get a depth data image as NSImage from URL
+if let depthData = AVDepthData.fromURL(url) {
+  let processor = DepthDataProcessor(depthData)
+  let depthImage = processor.nsImage(depthType: .depth)
+}
+```
+
+## Demo
+
+See also [DepthBrewer](https://github.com/Shakshi3104/DepthBrewer) for examples using Espresso
+
+<p aline="center">
+  <img src="materials/softcream_depth.png" width=350>
+  <img src="materials/macbookpro_depth.png" width=350>
+</p>
+
+
 
 ## Requirements
 

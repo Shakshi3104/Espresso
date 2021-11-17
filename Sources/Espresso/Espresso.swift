@@ -133,3 +133,6 @@ extension DepthDataProcessor {
     }
 }
 #endif
+
+// MARK: - Type alias: DepthDataProcessor as Espresso
+public typealias Espresso = DepthDataProcessor

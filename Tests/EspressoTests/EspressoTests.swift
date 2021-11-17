@@ -41,4 +41,30 @@ final class EspressoTests: XCTestCase {
         XCTAssertNotNil(depthImage)
         #endif
     }
+    
+    func testEspresso() {
+        let url = Bundle.module.url(forResource: "SoftCream", withExtension: "heic")
+        guard let url = url else {
+            return
+        }
+        let depthData = AVDepthData.fromURL(url)
+        XCTAssertNotNil(depthData)
+        
+        guard let depthData = depthData else {
+            return
+        }
+        
+        let espresso = Espresso(depthData)
+        #if os(iOS)
+        let uiImage = UIImage(named: "SoftCream", in: Bundle.module, compatibleWith: nil)
+        guard let uiImage = uiImage else {
+            return
+        }
+        let depthImage = espresso.uiImage(orientation: uiImage.imageOrientation, depthType: .depth)
+        XCTAssertNotNil(depthImage)
+        #elseif os(macOS)
+        let depthImage = espresso.nsImage(depthType: .depth)
+        XCTAssertNotNil(depthImage)
+        #endif
+    }
 }

@@ -13,14 +13,14 @@ let url = URL()
 
 // get a depth data image as UIImage from URL
 if let depthData = AVDepthData.fromURL(url) {
-  let processor = DepthDataProcessor(depthData)
-  let depthImage = processor.uiImage(orientation: .right, depthType: .depth)
+  let espresso = Espresso(depthData)
+  let depthImage = espresso.uiImage(orientation: .right, depthType: .depth)
 }
 
 // get a depth data image as NSImage from URL
 if let depthData = AVDepthData.fromURL(url) {
-  let processor = DepthDataProcessor(depthData)
-  let depthImage = processor.nsImage(depthType: .depth)
+  let espresso = Espresso(depthData)
+  let depthImage = espresso.nsImage(depthType: .depth)
 }
 ```
 

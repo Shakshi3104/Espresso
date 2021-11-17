@@ -68,31 +68,10 @@ public extension DepthDataProcessor {
         
         return depthDataImage
     }
-    
-    // save depth data image to photo library
-    func saveToPhotoLibrary(depthType: DepthType = .depth) {
-        var uiImage: UIImage?
-        
-        switch depthType {
-        case .depth:
-            uiImage = depthImage
-        case .disparity:
-            uiImage = dispariyImage
-        }
-        
-        guard let uiImage = uiImage else {
-            print("🎛 No depth data image")
-            return
-        }
-        
-        // write to photo library
-        UIImageWriteToSavedPhotosAlbum(uiImage, nil, nil, nil)
-    }
 }
 // MARK: - DepthDataProcessor for macOS
 #elseif os(macOS)
 public extension DepthDataProcessor {
-    
     // convert AVDepthData.depthDataMap to NSImage
     func nsImage(depthType: DepthType = .depth) -> NSImage? {
         // if depth data's NSImage is not nil
